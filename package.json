@@ -1,5 +1,5 @@
 {
-  "name": "ardrone",
+  "name": "kki-drone",
   "version": "0.0.0",
   "main": "lib/ardrone.js",
   "description": "The best module ever.",
@@ -19,7 +19,9 @@
   ],
   "keywords": [],
   "dependencies":{
-	"ar-drone": "0.3.2"
+		"ar-drone": "0.3.2",
+		"express": "4.4.3",
+		"dronestream":"1.1.1"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "^0.10.0",

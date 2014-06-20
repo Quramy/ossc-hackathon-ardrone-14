@@ -11,10 +11,8 @@ module.exports = (function(){
 				if(command.type === 'takeoff'){
 					client.takeoff();
 				}else if(command.type === 'stop'){
-					client.after(200, function(){
-						this.stop();
-						this.land();
-					});
+					client.stop();
+					client.land();
 				}
 			});
 

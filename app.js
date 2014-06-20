@@ -48,7 +48,6 @@ server = http.createServer(app); // add
 require('./socketCtrl.js')(socketIO.listen(server), droneWrap.createClient()); 
 
 
-
 require("dronestream").listen(server);
 
 server.listen(app.get('port'), function(){ //add

@@ -9,6 +9,8 @@ var express = require('express')
   , http = require('http')
   , path = require('path');
 
+var socketIO = require('socket.io');
+var droneWrap = require('./droneWrap.js');
 var app = express();
 
 app.configure(function(){
@@ -25,6 +27,7 @@ app.configure(function(){
 
 app.configure('development', function(){
   app.use(express.errorHandler());
+	app.locals.pretty = true;
 });
 
 app.get('/', routes.index);
@@ -36,29 +39,18 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 **/
 server = http.createServer(app); // add
-server.listen(app.get('port'), function(){ //add
-	console.log("Express server listening on port " + app.get('port'));
-});
 
-var socketIO = require('socket.io');
+
 // クライアントの接続を待つ(IPアドレスとポート番号を結びつけます)
-var io = socketIO.listen(server);
+//var io = socketIO.listen(server);
 //
 // // クライアントが接続してきたときの処理
-var ctrl = require('./socketCtrl.js');
-io.sockets.on('connection', function(socket) {
-	console.log("connection");
-	// メッセージを受けたときの処理
-	socket.on('message', function(data) {
-		// つながっているクライアント全員に送信
-		console.log("message");
-		io.sockets.emit('message', { value: data.value });
-	});
+require('./socketCtrl.js')(socketIO.listen(server), droneWrap.createClient()); 
 
-	ctrl(socket);
 
-	// クライアントが切断したときの処理
-	socket.on('disconnect', function(){
-		console.log("disconnect");
-	});
+
+require("dronestream").listen(server);
+
+server.listen(app.get('port'), function(){ //add
+	console.log("Express server listening on port " + app.get('port'));
 });

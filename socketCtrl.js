@@ -1,36 +1,28 @@
-
-var MOCK_MODE = true;
-var arDrone = require('ar-drone');
-
 module.exports = (function(){
 
-	var commandExec = function(command){
-	};
+	var socketCtrl = function(io, client){
+		
+		io.sockets.on('connection', function(socket) {
+			console.log("connection");
 
-	var ctrl = function(socket){
-
-		var client = (function(){
-			if(!MOCK_MODE){
-				return arDrone.createClient();
-			}else{
-				return {
-					takeoff: function(){
-						console.log('takeoff');
-					},
-					after: function(){
-					}
+			socket.on('drone', function(command) {
+				console.log(command.type);
+				//console.log(client);
+				if(command.type === 'takeoff'){
+					client.takeoff();
+				}else if(command.type === 'stop'){
+					client.after(200, function(){
+						this.stop();
+						this.land();
+					});
 				}
-			}
-		})();
+			});
 
-		socket.on('drone', function(command) {
-			console.log(command.type);
-			if(command.type === 'takeoff'){
-				client.takeoff();
-			}else if(command.type === 'stop'){
-			}
+			socket.on('disconnect', function(){
+				console.log("disconnect");
+			});
 		});
-	};
 
-	return ctrl;
+	};
+	return socketCtrl;
 })();

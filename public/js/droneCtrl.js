@@ -19,8 +19,12 @@ function SendMsg() {
 	socket.emit('message', { value: msg });
 }
 
-function droneCommand(command){
+function droneStart(command){
 	socket.emit('drone', { type: 'takeoff' });
+}
+
+function droneStop(){
+	socket.emit('drone', {type: 'stop'});
 }
 
 // 切断する

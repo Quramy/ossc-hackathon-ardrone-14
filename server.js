@@ -69,6 +69,5 @@
     });
     return res.end(currentImg, "binary");
   });
-	app.get('/autocmd/:name', function(req, res){
-	});
+	app.get('/autocmd/:name', autocmd.index);
 }).call(this);

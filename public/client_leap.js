@@ -4,7 +4,7 @@ var clientLeap = function(Leap, faye){
 	var base = {
 		position: {
 			x: 0,
-			y: 400,
+			y: 200,
 			z: 0
 		}
 	};
@@ -20,24 +20,45 @@ var clientLeap = function(Leap, faye){
 	}
 
 	var valid = false;
+	var isLanding = false;
 
 	function doFrame(latestFrame){
 		var $log = $("#log");
-		$log.html("");
 		counter++;
 			//$('#log').append(counter + '<br />')
 
-	  if(!latestFrame.hands.length === 0){
+	  if(latestFrame.hands.length === 0){
 			if(valid){
 				valid = false;
-				console.log('stop');
+				$log.text('No hands');
 				faye.publish("/drone/drone", {
 					action : 'stop'
 				});
+				console.log('stop');
 			}
 			return;
 		}else{
 			valid = true;
+		}
+		$log.html("");
+		if(latestFrame.hands.length > 1){
+			if(!isLanding){
+				isLanding = true;
+				$log.html("Land!");
+				console.log('landing!');
+				faye.publish("/drone/drone", {
+					action : 'land',
+					speed : 0.3,
+					duration : 1000 * parseInt($("#duration").val())
+				});
+				setTimeout(function(){
+					isLanding = false;
+				},3000);
+			}
+		}
+		if(isLanding){
+			$log.html("Landing...");
+			return;
 		}
 		if(latestFrame.hands.length > 0){
 			/**
@@ -59,6 +80,7 @@ var clientLeap = function(Leap, faye){
 			//console.log(hand.direction)
 
 			// move up/down
+			/*
 			if(hand.palmPosition[1] > base.position.y  + offset) {
 				$log.append('up' + '<br />')
 				if(drone.y != 'up') {
@@ -75,11 +97,6 @@ var clientLeap = function(Leap, faye){
 				}
 			} else if(hand.palmPosition[1] < base.position.y  - offset) {
 				$log.append('down' + '<br />')
-		//speed = 0;
-				/*
-				return faye.publish("/drone/drone", {
-					action : 'stop'
-				});*/
 				if(drone.y != 'down') {
 					drone.y = 'down'
 					socket.emit('message', {
@@ -91,7 +108,7 @@ var clientLeap = function(Leap, faye){
 							console.log('down: ' + data)
 						});         
 				}
-			}
+			}*/
 			/**
 			} else {
 				if(drone.y != 'steady') {

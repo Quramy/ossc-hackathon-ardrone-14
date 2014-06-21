@@ -128,9 +128,13 @@
   $("*[data-action]").on("mouseup", function(ev) {
     return faye.publish("/drone/move", {
       action: 'stop'
-      //action: $(this).attr("data-param"),
-      //speed: $(this).attr("data-action") === "move" ? 0 : void 0
+      // action: $(this).attr("data-param"),
+      // speed: $(this).attr("data-action") === "move" ? 0 : void 0
     });
   });
+  $("*[data-auto]").on("mouseup", function(ev) {
+	    return faye.publish("/autocmd/",+ $(this).attr("data-auto") {
+	    });
+	  });
   $("*[rel=tooltip]").tooltip();
 }).call(this);

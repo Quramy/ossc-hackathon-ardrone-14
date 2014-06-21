@@ -80,7 +80,7 @@
 					title="Battery status" rel="tooltip" data-placement="right">
 					<div class="bar" id="batterybar" style="width: 100%;"></div>
 				</div>
-				<img id="cam" src="default.jpg" />
+				<img id="cam" src="default.jpg" onclick="startVideo();"/>
 				<div class="buttons">
 					<div class="btn-toolbar">
 						<div class="btn-group">
@@ -127,7 +127,9 @@
 							</button>
 						</div>
 					</div>
-					<div>
+
+                    <div class="btn-toolbar">
+                        <!--
 						<button data-action="animate" data-param="phiM30Deg">
 							<a href="#">phiM30Deg(左に急に進む)</a>
 						</button>
@@ -146,39 +148,49 @@
 						<button data-action="animate" data-param="theta20degYawM200deg">
 							<a href="#">theta20degYawM200deg</a>
 						</button>
-						<button data-action="animate" data-param="turnaround">
-							<a href="#">turnaround(回りながら音を立てる)</a>
+                    -->
+						<button class="btn" data-action="animate" data-param="turnaround">
+							turnaround(回りながら音を立てる)
 						</button>
-						<button data-action="animate" data-param="turnaroundGodown">
+				<!-- 		<button class="btn btn-large" data-action="animate" data-param="turnaroundGodown">
 							<a href="#">turnaroundGodown(回りながら音を立てる)</a>
+						</button> -->
+						<button class="btn" data-action="animate" data-param="yawShake">
+							yawShake(揺れるだけ)
 						</button>
-						<button data-action="animate" data-param="yawShake">
-							<a href="#">yawShake(揺れるだけ)</a>
+						<button class="btn" data-action="animate" data-param="yawDance">
+							yawDance(少しだけ回る)
 						</button>
-						<button data-action="animate" data-param="yawDance">
-							<a href="#">yawDance(少しだけ回る)</a>
+						<button class="btn" data-action="animate" data-param="phiDance">
+							phiDance(左右に羽を揺らす)
 						</button>
-						<button data-action="animate" data-param="phiDance">
-							<a href="#">phiDance(左右に羽を揺らす)</a>
-						</button>
-						<button data-action="animate" data-param="thetaDance">
+		<!-- 				<button class="btn btn-large" data-action="animate" data-param="thetaDance">
 							<a href="#">thetaDance(前後に羽を揺らす)</a>
-						</button>
-						<button data-action="animate" data-param="vzDance">
+						</button> -->
+						
+              <!--           <button class="btn btn-large" data-action="animate" data-param="vzDance">
 							<a href="#">vzDance</a>
+						</button> -->
+
+						<button class="btn" data-action="animate" data-param="wave">
+							wave(揺れる)
 						</button>
-						<button data-action="animate" data-param="wave">
-							<a href="#">wave(揺れる)</a>
+						<button class="btn" data-action="animate" data-param="phiThetaMixed">
+							phiThetaMixed(小さく羽を揺らす)
 						</button>
-						<button data-action="animate" data-param="phiThetaMixed">
-							<a href="#">phiThetaMixed(小さく羽を揺らす)</a>
-						</button>
-						<button data-action="animate" data-param="doublePhiThetaMixed">
+<!--
+						<button class="btn btn-large" data-action="animate" data-param="doublePhiThetaMixed">
 							<a href="#">doublePhiThetaMixed(小さく羽を揺らす)</a>
 						</button>
-						<button data-action="animate" data-param="flipAhead">
-							<a href="#">flipAhead(禁止)</a>
+                    -->
+                </div>
+                <div class="btn-toolbar">
+						<button 
+                            class="btn btn-danger"
+                            data-action="animate" data-param="flipAhead">
+							絶対に押すな!<!--  flipAhead -->
 						</button>
+                        <!--
 						<button data-action="animate" data-param="flipBehind">
 							<a href="#">flipBehind(禁止)</a>
 						</button>
@@ -188,7 +200,7 @@
 						<button data-action="animate" data-param="flipRight">
 							<a href="#">flipRight(禁止)</a>
 						</button>
-
+    -->
 					</div>
 
 					<div class="btn-toolbar">

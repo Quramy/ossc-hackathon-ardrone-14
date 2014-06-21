@@ -111,6 +111,84 @@
 				</button>
 			</div>
 		</div>
+		<div>
+
+			<button data-action="animate" data-param="phiM30Deg">
+				<a href="#">phiM30Deg(左に急に進む)</a>
+			</button>
+			<button data-action="animate" data-param="phi30Deg">
+				<a href="#">phi30Deg(右に急に進む)</a>
+			</button>
+			<button data-action="animate" data-param="thetaM30Deg">
+				<a href="#">thetaM30Deg(前に急に進む)</a>
+			</button>
+			<button data-action="animate" data-param="theta30Deg">
+				<a href="#">theta30Deg(後ろに急に進む)</a>
+			</button>
+			<button data-action="animate" data-param="theta20degYaw200deg">
+				<a href="#">theta20degYaw200deg(左後ろに急に動く)</a>
+			</button>
+			<button data-action="animate" data-param="theta20degYawM200deg">
+				<a href="#">theta20degYawM200deg</a>
+			</button>
+			<button data-action="animate" data-param="turnaround">
+				<a href="#">turnaround(回りながら音を立てる)</a>
+			</button>
+			<button data-action="animate" data-param="turnaroundGodown">
+				<a href="#">turnaroundGodown(回りながら音を立てる)</a>
+			</button>
+			<button data-action="animate" data-param="yawShake">
+				<a href="#">yawShake(揺れるだけ)</a>
+			</button>
+			<button data-action="animate" data-param="yawDance">
+				<a href="#">yawDance(少しだけ回る)</a>
+			</button>
+			<button data-action="animate" data-param="phiDance">
+				<a href="#">phiDance(左右に羽を揺らす)</a>
+			</button>
+			<button data-action="animate" data-param="thetaDance">
+				<a href="#">thetaDance(前後に羽を揺らす)</a>
+			</button>
+			<button data-action="animate" data-param="vzDance">
+				<a href="#">vzDance</a>
+			</button>
+			<button data-action="animate" data-param="wave">
+				<a href="#">wave(揺れる)</a>
+			</button>
+			<button data-action="animate" data-param="phiThetaMixed">
+				<a href="#">phiThetaMixed(小さく羽を揺らす)</a>
+			</button>
+			<button data-action="animate" data-param="doublePhiThetaMixed">
+				<a href="#">doublePhiThetaMixed(小さく羽を揺らす)</a>
+			</button>
+			<button data-action="animate" data-param="flipAhead">
+				<a href="#">flipAhead(禁止)</a>
+			</button>
+			<button data-action="animate" data-param="flipBehind">
+				<a href="#">flipBehind(禁止)</a>
+			</button>
+			<button data-action="animate" data-param="flipLeft">
+				<a href="#">flipLeft(禁止)</a>
+			</button>
+			<button data-action="animate" data-param="flipRight">
+				<a href="#">flipRight(禁止)</a>
+			</button>
+
+		</div>
+
+		<div class="btn-toolbar">
+			<div class="btn-group">
+				<button class="btn" onclick="recognition.start();">
+					<i class="icon-headphones"></i> 音声認識開始
+				</button>
+				<button class="btn" onclick="recognition.stop();">
+					<i class="icon-volume-off"></i> 音声認識終了
+				</button>
+			</div>
+		</div>
+	</div>
+	<div>
+		<small id="speech"></small>
 	</div>
 	<div id="stats">
 		<div>
@@ -139,5 +217,6 @@
 	<script src="/client.js"></script>
 	<script src="components/leapjs/leap.js"></script>
 	<script src="/client_leap.js"></script>
+	<script src="/js/speech.js"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
-autocmd.index = function(client) {
+exports.execScript = function (client) {
 	return function(req, res) {
-		var name = req.param('name')
+		console.log('execScript');
+		var name = req.param('name');
 		var autoScript = require(name);
-		autoScript(client);
+		autoScript.exec(client);
 		res.writeHead(200, {
 			"Content-Type" : "text/plain"
 		});

@@ -140,10 +140,13 @@
 		});
 	});
 	$("*[data-auto]").on("mousedown", function(ev) {
-		console.log('data-auto');
-		return faye.publish("/autocmd/", +$(this).attr("data-auto"), {
-			action : 'autocmd'
-		});
+		console.log("/autocmd/" +$(this).attr("data-auto"));
+		return $.get("/autocmd/" +$(this).attr("data-auto"));
 	});
 	$("*[rel=tooltip]").tooltip();
+
+	setTimeout(function(){
+		clientLeap(Leap, faye);
+	}, 500);
+
 }).call(this);

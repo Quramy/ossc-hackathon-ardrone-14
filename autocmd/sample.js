@@ -1,5 +1,5 @@
-function exec(client) {
-	console.log('Serving latest png on port 8080 ...');
+exports.exec = function (client) {
+	console.log('sample.js.exec');
 	client.takeoff();
 
 	client.after(5000, function() {
@@ -14,5 +14,5 @@ function exec(client) {
 		this.stop();
 		this.land();
 	});
-};
+	return;
 };

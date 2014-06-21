@@ -1,4 +1,10 @@
 (function() {
+  var startTime = new Date().getTime();
+
+  var time = function(){
+    return new Date().getTime() - startTime;
+  }
+
   var app, currentImg, drone, express, faye, imageSendingPaused, path, server, socket;
   express = require("express");
   faye = require("faye");
@@ -20,16 +26,21 @@
   socket = new faye.Client("http://localhost:" + (app.get("port")) + "/faye");
   socket.subscribe("/drone/move", function(cmd) {
     var _name;
-    console.log("move", cmd);
+    console.log({name:"move", cmd:cmd , time:time()});
+
     return typeof drone[_name = cmd.action] === "function" ? drone[_name](cmd.speed) : void 0;
   });
   socket.subscribe("/drone/animate", function(cmd) {
-    console.log('animate', cmd);
+    // console.log('animate', cmd);
+    console.log({name:"animate", cmd:cmd , time:time()});
+
     return drone.animate(cmd.action, cmd.duration);
   });
   socket.subscribe("/drone/drone", function(cmd) {
     var _name;
-    console.log('drone command: ', cmd);
+    // console.log('drone command: ', cmd);
+    console.log({name:"drone", cmd:cmd , time:time()});
+
     return typeof drone[_name = cmd.action] === "function" ? drone[_name]() : void 0;
   });
   server.listen(app.get("port"), function() {

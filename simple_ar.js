@@ -3,7 +3,7 @@ var arDrone = require('ar-drone');
 
 //var pngStream = arDrone.createClient().getPngStream();
 var client = arDrone.createClient();
-client.disableEmergency();
+// client.disableEmergency();
 
 // console.log('Connecting png stream ...');
 // var pngStream = client.getPngStream();

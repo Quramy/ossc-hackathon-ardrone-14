@@ -12,6 +12,7 @@ faye.subscribe("/drone/navdata", function(data) {
 });
 window.showBatteryStatus = function(batteryPercentage) {
 	$("#batterybar").width("" + batteryPercentage + "%");
+	$("#batterybar").text(batteryPercentage + '%');
 	if (batteryPercentage < 30) {
 		$("#batteryProgress").removeClass("progress-success").addClass(
 				"progress-warning");

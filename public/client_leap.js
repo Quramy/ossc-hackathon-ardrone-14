@@ -19,12 +19,26 @@ var clientLeap = function(Leap, faye){
 		emit: function(){}
 	}
 
+	var valid = false;
+
 	function doFrame(latestFrame){
 		var $log = $("#log");
 		$log.html("");
 		counter++;
 			//$('#log').append(counter + '<br />')
 
+	  if(!latestFrame.hands.length === 0){
+			if(valid){
+				valid = false;
+				console.log('stop');
+				faye.publish("/drone/drone", {
+					action : 'stop'
+				});
+			}
+			return;
+		}else{
+			valid = true;
+		}
 		if(latestFrame.hands.length > 0){
 			/**
 			if(!drone.flying) {
@@ -61,6 +75,11 @@ var clientLeap = function(Leap, faye){
 				}
 			} else if(hand.palmPosition[1] < base.position.y  - offset) {
 				$log.append('down' + '<br />')
+		//speed = 0;
+				/*
+				return faye.publish("/drone/drone", {
+					action : 'stop'
+				});*/
 				if(drone.y != 'down') {
 					drone.y = 'down'
 					socket.emit('message', {

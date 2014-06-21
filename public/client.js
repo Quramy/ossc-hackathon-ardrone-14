@@ -106,6 +106,7 @@
 	speed = 0;
 	$(document).keydown(function(ev) {
 		var evData;
+		console.log(ev)
 		if (keymap[ev.keyCode] == null) {
 			return;
 		}

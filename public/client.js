@@ -106,6 +106,7 @@
 	speed = 0;
 	$(document).keydown(function(ev) {
 		var evData;
+		console.log(ev)
 		if (keymap[ev.keyCode] == null) {
 			return;
 		}
@@ -143,4 +144,9 @@
 		return $.get("/autocmd/" +$(this).attr("data-auto"));
 	});
 	$("*[rel=tooltip]").tooltip();
+
+	setTimeout(function(){
+		clientLeap(Leap, faye);
+	}, 500);
+
 }).call(this);

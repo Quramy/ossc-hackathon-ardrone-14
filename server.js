@@ -68,22 +68,22 @@
 		return socket.publish("/drone/navdata", data);
 	});
 	imageSendingPaused = false;
-//	drone.createPngStream().on("data", function(frame) {
-//		currentImg = frame;
-//		if (imageSendingPaused) {
-//			return;
-//		}
-//		socket.publish("/drone/image", "/image/" + (Math.random()));
-//		imageSendingPaused = true;
-//		return setTimeout((function() {
-//			return imageSendingPaused = false;
-//		}), 100);
-//	});
-//	app.get("/image/:id", function(req, res) {
-//		res.writeHead(200, {
-//			"Content-Type" : "image/png"
-//		});
-//		return res.end(currentImg, "binary");
-//	});
+	drone.createPngStream().on("data", function(frame) {
+		currentImg = frame;
+		if (imageSendingPaused) {
+			return;
+		}
+		socket.publish("/drone/image", "/image/" + (Math.random()));
+		imageSendingPaused = true;
+		return setTimeout((function() {
+			return imageSendingPaused = false;
+		}), 100);
+	});
+	app.get("/image/:id", function(req, res) {
+		res.writeHead(200, {
+			"Content-Type" : "image/png"
+		});
+		return res.end(currentImg, "binary");
+	});
 	app.get('/autocmd/:name', autocmd.execScript(drone));
 }).call(this);

@@ -6,6 +6,7 @@
   }
 
   var app, currentImg, drone, express, faye, imageSendingPaused, path, server, socket;
+	var autocmd = require('autocmd');
   express = require("express");
   faye = require("faye");
   path = require("path");
@@ -68,4 +69,5 @@
     });
     return res.end(currentImg, "binary");
   });
+	app.get('/autocmd/:name', autocmd.index);
 }).call(this);

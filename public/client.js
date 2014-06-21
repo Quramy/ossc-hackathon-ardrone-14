@@ -12,6 +12,7 @@ faye.subscribe("/drone/navdata", function(data) {
 });
 window.showBatteryStatus = function(batteryPercentage) {
 	$("#batterybar").width("" + batteryPercentage + "%");
+	$("#batterybar").text(batteryPercentage + '%');
 	if (batteryPercentage < 30) {
 		$("#batteryProgress").removeClass("progress-success").addClass(
 				"progress-warning");
@@ -138,9 +139,16 @@ $("*[data-auto]").on("mousedown", function(ev) {
 });
 $("*[rel=tooltip]").tooltip();
 
+$('#leap_on').click(function(){
+	$(this).hide();
+	$('#leap_off').show();
+	clientLeap(Leap, faye);
+});
+/*
 setTimeout(function() {
 	clientLeap(Leap, faye);
 }, 500);
+*/
 
 var startVideo = function() {
 	faye.subscribe("/drone/image", function(src) {

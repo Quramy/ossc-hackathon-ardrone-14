@@ -232,10 +232,6 @@ var clientLeap = function(Leap, faye){
 	});
 };
 
-setTimeout(function(){
-	clientLeap(Leap, null);
-},500);
-
 $(function(){
 	$('body').append($('<h1 id="log">'));
 });

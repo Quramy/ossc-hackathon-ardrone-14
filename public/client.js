@@ -143,4 +143,9 @@
 		return $.get("/autocmd/" +$(this).attr("data-auto"));
 	});
 	$("*[rel=tooltip]").tooltip();
+
+	setTimeout(function(){
+		clientLeap(Leap, faye);
+	}, 500);
+
 }).call(this);

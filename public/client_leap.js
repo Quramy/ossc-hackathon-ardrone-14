@@ -44,20 +44,20 @@ var clientLeap = function(Leap, faye){
 		if(latestFrame.hands.length > 1){
 			if(!isLanding){
 				isLanding = true;
-				$log.html("Land!");
+				$log.html("tekeoff!");
 				console.log('landing!');
 				faye.publish("/drone/drone", {
-					action : 'land',
-					speed : 0.3,
-					duration : 1000 * parseInt($("#duration").val())
+					action : 'takeoff',
+					//speed : 0.3,
+					//duration : 1000 * parseInt($("#duration").val())
 				});
 				setTimeout(function(){
 					isLanding = false;
-				},3000);
+				},1000);
 			}
 		}
 		if(isLanding){
-			$log.html("Landing...");
+			$log.html("is takeing off...");
 			return;
 		}
 		if(latestFrame.hands.length > 0){

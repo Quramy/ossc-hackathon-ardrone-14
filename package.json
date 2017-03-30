@@ -19,19 +19,19 @@
   ],
   "keywords": [],
   "dependencies":{
-		"ar-drone": "0.3.2",
-		"express": "~3.3.4",
+		"ar-drone": "0.3.3",
+		"express": "~4.15.2",
 		"dronestream":"1.1.1",
-    "faye": "0.8.x",
-		"socket.io":"1.0.6"
+    "faye": "~1.2.4",
+		"socket.io":"1.7.3"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-nodeunit": "^0.3.3",
-    "grunt-contrib-watch": "^0.6.1",
-    "load-grunt-tasks": "^0.4.0",
-    "time-grunt": "^0.3.1",
-    "jshint-stylish": "^0.2.0"
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "load-grunt-tasks": "^3.5.2",
+    "time-grunt": "^1.4.0",
+    "jshint-stylish": "^2.2.1"
   },
   "scripts": {
     "test": "grunt"

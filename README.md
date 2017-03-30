@@ -1,5 +1,7 @@
 # ardrone [![Build Status](https://secure.travis-ci.org//ardrone.png?branch=master)](http://travis-ci.org//ardrone)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Quramy/ossc-hackathon-ardrone-14.svg)](https://greenkeeper.io/)
+
 The best module ever.
 
 ## Getting Started
